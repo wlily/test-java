@@ -15,7 +15,6 @@ public class TestMap extends TestBase {
         Map map2 = new LinkedHashMap();
         Map map3 = new TreeMap();
         Map map4 = Collections.synchronizedMap(map1);
-        Hashtable hashTable = new Hashtable<String, String>();
 
         String[] s = new String[]{"1", "a", "dd", "22", "33", "1", "a"};
 
