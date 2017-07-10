@@ -1,7 +1,5 @@
 package com.wll.test.java.collection;
 
-import com.wll.test.java.synchronize.TestThreadLocal;
-
 import java.util.*;
 
 /**

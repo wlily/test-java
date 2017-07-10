@@ -1,7 +1,5 @@
 package com.wll.test.java.collection;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.Vector;
 
 /**
