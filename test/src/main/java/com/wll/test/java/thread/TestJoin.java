@@ -14,7 +14,7 @@ public class TestJoin {
             public void run() {
                 try {
                     System.out.println("thread1 running");
-                    Thread.currentThread().sleep(30*1000);
+                    Thread.currentThread().sleep(5*1000);
                     System.out.println("thread1 finished");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -27,8 +27,21 @@ public class TestJoin {
             public void run() {
                 try {
                     System.out.println("thread2 running");
-                    Thread.currentThread().sleep(10*1000);
+                    Thread.currentThread().sleep(3*1000);
                     System.out.println("thread2 finished");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("thread3 running");
+                    Thread.currentThread().sleep(5*1000);
+                    System.out.println("thread3 finished");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -44,6 +57,7 @@ public class TestJoin {
             System.out.println("sdsfsd");
             t2.join();
             System.out.println("main thread resumes");
+            t3.start();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

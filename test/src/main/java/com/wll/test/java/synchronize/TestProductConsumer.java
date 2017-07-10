@@ -1,4 +1,4 @@
-package com.wll.test.java.thread;
+package com.wll.test.java.synchronize;
 
 import java.util.LinkedList;
 import java.util.concurrent.BlockingQueue;
@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TestProductConsumer {
 
     public static void main(String[] args) {
-        final WaitNotifyBroker2 broker = new WaitNotifyBroker2(100);
+        final WaitNotifyBroker broker = new WaitNotifyBroker(100);
 
         for (int i = 0; i < 3; i++) {
             //producer
@@ -42,69 +42,14 @@ public class TestProductConsumer {
 
     interface Broker<T> {
         T take();
-
         void put(T obj);
     }
 
     static class WaitNotifyBroker<T> implements Broker<T> {
-        private final Object[] items;
-
-        private int takeIndex;
-        private int putIndex;
-        private int count;
-
-        public WaitNotifyBroker(int capacity) {
-            this.items = new Object[capacity];
-        }
-
-        @Override
-        public T take() {
-            T tmpObj = null;
-            try {
-                synchronized (items) {
-                    while (0 == count) {
-                        items.wait();
-                    }
-                    tmpObj = (T) items[takeIndex];
-                    if (++takeIndex == items.length) {
-                        takeIndex = 0;
-                    }
-                    count--;
-                    items.notify();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            return tmpObj;
-        }
-
-        @Override
-        public void put(T obj) {
-            try {
-                synchronized (items) {
-                    while (items.length == count) {
-                        items.wait();
-                    }
-
-                    items[putIndex] = obj;
-                    if (++putIndex == items.length) {
-                        putIndex = 0;
-                    }
-                    count++;
-                    items.notify();
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    static class WaitNotifyBroker2<T> implements Broker<T> {
         private int capacity = 100;
         private final LinkedList<T> items = new LinkedList<T>();
 
-        public WaitNotifyBroker2(int capacity) {
+        public WaitNotifyBroker(int capacity) {
             this.capacity = capacity;
         }
 
@@ -155,7 +100,6 @@ public class TestProductConsumer {
             this.notFull = lock.newCondition();
             this.notEmpty = lock.newCondition();
             this.capacity = capacity;
-
             items = new LinkedList<T>();
         }
 
@@ -189,7 +133,6 @@ public class TestProductConsumer {
 
                 items.offer(obj);
                 notEmpty.signalAll();
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
@@ -200,7 +143,6 @@ public class TestProductConsumer {
     }
 
     static class BlockingQueueBroker<T> implements Broker<T> {
-
         private final BlockingQueue<T> queue;
 
         public BlockingQueueBroker() {

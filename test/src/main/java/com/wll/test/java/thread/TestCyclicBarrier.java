@@ -28,6 +28,7 @@ public class TestCyclicBarrier {
                 //线程在这里等待, 直到所有线程都到达barrier
                 barrier.await();
                 System.out.println("ID: " + Thread.currentThread().getId() + " working");
+                Thread.sleep(10*1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (BrokenBarrierException e) {

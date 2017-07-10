@@ -75,7 +75,7 @@ public class TestFutureTask {
         return c;
     }
 
-    static class  MatchCount implements Callable<Integer>{
+    static class MatchCount implements Callable<Integer>{
         public File file;
         public String keyword;
         private  Integer count = 0;
