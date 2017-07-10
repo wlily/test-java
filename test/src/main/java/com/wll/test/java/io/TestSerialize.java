@@ -13,7 +13,7 @@ public class TestSerialize {
         testSerialize.write();
         testSerialize.read();
     }
-    class Person implements Serializable{
+    static class Person implements Serializable{
         private String name;
         private int age;
         private transient int id;
