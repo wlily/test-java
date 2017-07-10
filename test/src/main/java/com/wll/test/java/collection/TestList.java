@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by wll on 17-7-10.
  */
-public class TestList {
+public class TestList extends TestBase{
 
     public static void main(String[] args) {
         TestList testList = new TestList();
@@ -20,18 +20,11 @@ public class TestList {
             list2.add(s[i]);
         }
 
-        testList.walkSet(list1);
+        testList.walk(list1);
         System.out.println("***********");
-        testList.walkSet(list2);
+        testList.walk(list2);
         System.out.println("***********");
-        testList.walkSet(list3);
+        testList.walk(list3);
         System.out.println("***********");
-    }
-
-    private void walkSet(List list){
-        Iterator iterator = list.iterator();
-        for(;iterator.hasNext();){
-            System.out.println(iterator.next());
-        }
     }
 }

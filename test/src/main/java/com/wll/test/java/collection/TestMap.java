@@ -1,11 +1,13 @@
 package com.wll.test.java.collection;
 
+import com.wll.test.java.synchronize.TestThreadLocal;
+
 import java.util.*;
 
 /**
  * Created by wll on 17-7-10.
  */
-public class TestMap {
+public class TestMap extends TestBase {
 
     public static void main(String[] args) {
         TestMap testMap = new TestMap();
@@ -13,6 +15,7 @@ public class TestMap {
         Map map2 = new LinkedHashMap();
         Map map3 = new TreeMap();
         Map map4 = Collections.synchronizedMap(map1);
+        Hashtable hashTable = new Hashtable<String, String>();
 
         String[] s = new String[]{"1", "a", "dd", "22", "33", "1", "a"};
 
@@ -22,21 +25,14 @@ public class TestMap {
             map3.put(s[i], i);
         }
 
-        testMap.walkSet(map1);
+        testMap.walk(map1);
         System.out.println("***********");
-        testMap.walkSet(map2);
+        testMap.walk(map2);
         System.out.println("***********");
-        testMap.walkSet(map3);
+        testMap.walk(map3);
         System.out.println("***********");
 
-        testMap.walkSet(map4);
+        testMap.walk(map4);
         System.out.println("***********");
-    }
-
-    private void walkSet(Map map){
-        Iterator iterator = map.entrySet().iterator();
-        for(;iterator.hasNext();){
-            System.out.println(iterator.next());
-        }
     }
 }

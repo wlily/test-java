@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by wll on 17-7-10.
  */
-public class TestSet {
+public class TestSet extends TestBase{
 
     public static void main(String[] args) {
         TestSet testSet = new TestSet();
@@ -22,21 +22,14 @@ public class TestSet {
             set3.add(s[i]);
         }
 
-        testSet.walkSet(set1);
+        testSet.walk(set1);
         System.out.println("***********");
-        testSet.walkSet(set2);
+        testSet.walk(set2);
         System.out.println("***********");
-        testSet.walkSet(set3);
+        testSet.walk(set3);
         System.out.println("***********");
 
-        testSet.walkSet(set4);
+        testSet.walk(set4);
         System.out.println("***********");
-    }
-
-    private void walkSet(Set set){
-        Iterator iterator = set.iterator();
-        for(;iterator.hasNext();){
-            System.out.println(iterator.next());
-        }
     }
 }
