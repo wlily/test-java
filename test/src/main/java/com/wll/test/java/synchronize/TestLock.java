@@ -60,7 +60,7 @@ public class TestLock {
     }
 
     static class TestLock1 {
-        private ReentrantLock lock = new ReentrantLock();
+        private ReentrantLock lock = new ReentrantLock( true);
 
         public void test1() {
             try {

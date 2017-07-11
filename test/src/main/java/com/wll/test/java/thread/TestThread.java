@@ -27,5 +27,6 @@ public class TestThread {
         t.start();
         t.start();
         t.start();
+        System.out.println("sssss");
     }
 }
