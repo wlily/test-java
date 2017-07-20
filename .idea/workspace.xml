@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad0462f-d519-471a-8f5f-1c41c9c7b64f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/sort.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/BubbleSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/HeapSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/OptimizedBubbleSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/QuickSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/ShellsSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/SimpleSelectionSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/SimpleSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/StraightInsertSort.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/collection/TestConcurrentHashMap.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/io/Chat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/io/SocketClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/io/SocketServer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/synchronize/TestReadWriteLock.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/test/target/" />
@@ -82,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Chat.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Chat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/io/Chat.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="454">
@@ -94,28 +82,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sort.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/sort.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="TestReadWriteLock.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/synchronize/TestReadWriteLock.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="794">
+              <caret line="49" column="37" lean-forward="true" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+                <element signature="e#342#343#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleSelectionSort.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/SimpleSelectionSort.java">
+      <file leaf-file-name="ReadWriteLock.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/2-develop/jdk1.8.0_131/src.zip!/java/util/concurrent/locks/ReadWriteLock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="32" lean-forward="false" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            <state relative-caret-position="423">
+              <caret line="124" column="9" lean-forward="false" selection-start-line="124" selection-start-column="9" selection-end-line="124" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeapSort.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/algorithm/HeapSort.java">
+      <file leaf-file-name="TestProductConsumer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/synchronize/TestProductConsumer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+            <state relative-caret-position="-1200">
+              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -186,6 +181,7 @@
         <option value="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/io/SocketServer.java" />
         <option value="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/io/SocketClient.java" />
         <option value="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/io/Chat.java" />
+        <option value="$PROJECT_DIR$/test/src/main/java/com/wll/test/java/synchronize/TestReadWriteLock.java" />
       </list>
     </option>
   </component>
@@ -295,7 +291,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
+              <option name="myItemId" value="synchronize" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -330,27 +326,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SocketServer">
-    <configuration default="false" name="OptimizedBubbleSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.wll.test.java.algorithm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.wll.test.java.algorithm.OptimizedBubbleSort" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="test" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.TestReadWriteLock">
     <configuration default="false" name="QuickSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -419,6 +395,26 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.wll.test.java.io.SocketClient" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="test" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestReadWriteLock" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.wll.test.java.synchronize.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.wll.test.java.synchronize.TestReadWriteLock" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -620,19 +616,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.OptimizedBubbleSort" />
-      <item index="1" class="java.lang.String" itemvalue="Application.QuickSort" />
-      <item index="2" class="java.lang.String" itemvalue="Application.StraightInsertSort" />
-      <item index="3" class="java.lang.String" itemvalue="Application.SocketServer" />
-      <item index="4" class="java.lang.String" itemvalue="Application.SocketClient" />
+      <item index="0" class="java.lang.String" itemvalue="Application.QuickSort" />
+      <item index="1" class="java.lang.String" itemvalue="Application.StraightInsertSort" />
+      <item index="2" class="java.lang.String" itemvalue="Application.SocketServer" />
+      <item index="3" class="java.lang.String" itemvalue="Application.SocketClient" />
+      <item index="4" class="java.lang.String" itemvalue="Application.TestReadWriteLock" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.SocketClient" />
-        <item index="1" class="java.lang.String" itemvalue="Application.SocketServer" />
-        <item index="2" class="java.lang.String" itemvalue="Application.StraightInsertSort" />
-        <item index="3" class="java.lang.String" itemvalue="Application.QuickSort" />
-        <item index="4" class="java.lang.String" itemvalue="Application.OptimizedBubbleSort" />
+        <item index="0" class="java.lang.String" itemvalue="Application.TestReadWriteLock" />
+        <item index="1" class="java.lang.String" itemvalue="Application.SocketClient" />
+        <item index="2" class="java.lang.String" itemvalue="Application.SocketServer" />
+        <item index="3" class="java.lang.String" itemvalue="Application.StraightInsertSort" />
+        <item index="4" class="java.lang.String" itemvalue="Application.QuickSort" />
       </list>
     </recent_temporary>
   </component>
@@ -653,12 +649,12 @@
       <workItem from="1499775075721" duration="8593000" />
       <workItem from="1499858313494" duration="2092000" />
       <workItem from="1500086236227" duration="8997000" />
-      <workItem from="1500532532283" duration="5240000" />
+      <workItem from="1500532532283" duration="5744000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26447000" />
+    <option name="totallyTimeSpent" value="26951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1375" height="904" extended-state="6" />
@@ -670,10 +666,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988358" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33866668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38933334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22197141" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18359669" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.040632054" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -738,8 +734,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/develop/1.jdk/jdk1.8.0_131/src.zip!/java/lang/IllegalArgumentException.java" />
-    <entry file="jar://$USER_HOME$/develop/1.jdk/jdk1.8.0_131/src.zip!/java/lang/IllegalThreadStateException.java" />
     <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/thread/TestThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -758,13 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/synchronize/TestProductConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -867,6 +854,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -935,6 +923,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1104,6 +1093,34 @@
           <caret line="40" column="52" lean-forward="true" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/synchronize/TestProductConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1200">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/2-develop/jdk1.8.0_131/src.zip!/java/util/concurrent/locks/ReadWriteLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="124" column="9" lean-forward="false" selection-start-line="124" selection-start-column="9" selection-end-line="124" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/main/java/com/wll/test/java/synchronize/TestReadWriteLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="794">
+          <caret line="49" column="37" lean-forward="true" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
           </folding>
         </state>
       </provider>
