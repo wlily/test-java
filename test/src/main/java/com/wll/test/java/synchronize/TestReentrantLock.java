@@ -7,27 +7,27 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by wll on 2/17/17.
  */
-public class TestLock {
+public class TestReentrantLock {
     public static void main(String[] args) {
-        TestLock testLock = new TestLock();
-        testLock.testLock();
-        testLock.testCondition();
+        TestReentrantLock testReentrantLock = new TestReentrantLock();
+        testReentrantLock.testLock();
+//        testReentrantLock.testCondition();
     }
 
     private void testLock(){
         TestLock1 testLock1 = new TestLock1();
         Thread t1 = new Thread(() -> testLock1.test1(), "thread1");
-        Thread t2 = new Thread(() -> testLock1.test1(), "thread2");
+        Thread t2 = new Thread(() -> testLock1.ttt(), "thread2");
         Thread t3 = new Thread(() -> testLock1.test2(), "thread3");
         t1.start();
         t2.start();
-        t3.start();
-        try {
-            Thread.sleep(100);
-            t3.interrupt();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        t3.start();
+//        try {
+//            Thread.sleep(100);
+//            t3.interrupt();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void testCondition(){
@@ -68,14 +68,31 @@ public class TestLock {
                 lock.lock();
                 System.out.println(Thread.currentThread().getName() + " locked");
                 try {
-                    Thread.sleep(2 * 1000);
+                    Thread.sleep(3*1000);
                     tt();
                 } catch (InterruptedException e) {
                     System.out.println(Thread.currentThread().getName() + " interrupted");
                 }
             } finally {
+                System.out.println(Thread.currentThread().getName() + " try unlock");
                 lock.unlock();
                 System.out.println(Thread.currentThread().getName() + " unlocked");
+            }
+        }
+
+        public void ttt() {
+            try {
+                System.out.println(Thread.currentThread().getName() + " try lock");
+                lock.lock();
+                try {
+                    Thread.sleep(30*60 * 1000);
+                    tt();
+                } catch (InterruptedException e) {
+                    System.out.println(Thread.currentThread().getName() + " interrupted");
+                }
+            } finally {
+                System.out.println(Thread.currentThread().getName() + " try unlock");
+                lock.unlock();
             }
         }
 
