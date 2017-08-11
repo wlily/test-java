@@ -10,8 +10,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TestReentrantLock {
     public static void main(String[] args) {
         TestReentrantLock testReentrantLock = new TestReentrantLock();
-        testReentrantLock.testLock();
-//        testReentrantLock.testCondition();
+//        testReentrantLock.testLock();
+        testReentrantLock.testCondition();
     }
 
     private void testLock(){
@@ -130,86 +130,77 @@ public class TestReentrantLock {
         private Condition c3 = lock.newCondition();
 
         public void test() {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 5; i++) {
-                        try {
-                            System.out.println(Thread.currentThread().getName() + " lock ");
-                            lock.lock();
-                            System.out.println(Thread.currentThread().getName() + " locked ");
-                            while (state != 1) {
-                                try {
-                                    c1.await();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+            new Thread(() -> {
+                for (int i = 0; i < 5; i++) {
+                    try {
+                        System.out.println(Thread.currentThread().getName() + " lock ");
+                        lock.lock();
+                        System.out.println(Thread.currentThread().getName() + " locked ");
+                        while (state != 1) {
+                            try {
+                                c1.await();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
-                            for (int j = 0; j < 5; j++) {
-                                System.out.println(Thread.currentThread().getName() + ": " + n++);
-                            }
-                            System.out.println();
-                            state = 2;
-                            c2.signal();
-                        } finally {
-                            lock.unlock();
                         }
+                        for (int j = 0; j < 5; j++) {
+                            System.out.println(Thread.currentThread().getName() + ": " + n++);
+                        }
+                        System.out.println();
+                        state = 2;
+                        c2.signal();
+                    } finally {
+                        lock.unlock();
                     }
                 }
             }, "thread1").start();
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 5; i++) {
-                        try {
-                            System.out.println(Thread.currentThread().getName() + " lock ");
-                            lock.lock();
-                            System.out.println(Thread.currentThread().getName() + " locked ");
-                            while (state != 2) {
-                                try {
-                                    c2.await();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+            new Thread(() -> {
+                for (int i = 0; i < 5; i++) {
+                    try {
+                        System.out.println(Thread.currentThread().getName() + " lock ");
+                        lock.lock();
+                        System.out.println(Thread.currentThread().getName() + " locked ");
+                        while (state != 2) {
+                            try {
+                                c2.await();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
-                            for (int j = 0; j < 5; j++) {
-                                System.out.println(Thread.currentThread().getName() + ": " + n++);
-                            }
-                            System.out.println();
-                            state = 3;
-                            c3.signal();
-                        } finally {
-                            lock.unlock();
                         }
+                        for (int j = 0; j < 5; j++) {
+                            System.out.println(Thread.currentThread().getName() + ": " + n++);
+                        }
+                        System.out.println();
+                        state = 3;
+                        c3.signal();
+                    } finally {
+                        lock.unlock();
                     }
                 }
             }, "thread2").start();
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 5; i++) {
-                        try {
-                            System.out.println(Thread.currentThread().getName() + " lock ");
-                            lock.lock();
-                            System.out.println(Thread.currentThread().getName() + " locked ");
-                            while (state != 3) {
-                                try {
-                                    c3.await();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+            new Thread(() -> {
+                for (int i = 0; i < 5; i++) {
+                    try {
+                        System.out.println(Thread.currentThread().getName() + " lock ");
+                        lock.lock();
+                        System.out.println(Thread.currentThread().getName() + " locked ");
+                        while (state != 3) {
+                            try {
+                                c3.await();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
-                            for (int j = 0; j < 5; j++) {
-                                System.out.println(Thread.currentThread().getName() + ": " + n++);
-                            }
-                            System.out.println();
-                            state = 1;
-                            c1.signal();
-                        } finally {
-                            lock.unlock();
                         }
+                        for (int j = 0; j < 5; j++) {
+                            System.out.println(Thread.currentThread().getName() + ": " + n++);
+                        }
+                        System.out.println();
+                        state = 1;
+                        c1.signal();
+                    } finally {
+                        lock.unlock();
                     }
                 }
             }, "thread3").start();
