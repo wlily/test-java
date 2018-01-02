@@ -15,6 +15,17 @@
             <artifactId>cglib</artifactId>
             <version>3.2.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.wll.test.java</groupId>
+            <artifactId>other</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.2.3.RELEASE</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>QuickStart</finalName>
@@ -31,6 +42,19 @@
                     <!--<verbose />-->
                     <!--<bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>-->
                     <!--</compilerArguments>-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.allen.capturewebdata.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
             </plugin>
         </plugins>
