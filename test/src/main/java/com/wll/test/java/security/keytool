@@ -1,0 +1,157 @@
+
+########使用jdk的keytool生成证书, keytool工具不支持导出私钥
+1. 生成私钥+服务端证书, 生成keystore, 并将证书保存到keystore
+keytool -genkey -v -alias cert1 -keyalg RSA -keystore tomcat_server_ks -dname "CN=localhost,OU=,O=,L=,ST=,C=CN" -storepass tomcat -keypass tomcat -validity 36500
+
+2. 生成私钥+客户端证书， 生成keystore， 并将证书保存到keystore
+keytool -genkey -v -alias cert2 -keyalg RSA -keystore tomcat_client_ks -dname "CN=localhost,OU=,O=,L=,ST=wll,C=CN" -storepass tomcat -keypass tomcat -validity 36500
+
+3. 导出服务端证书到server_key.cer文件
+keytool -export -alias cert1 -keystore tomcat_server_ks -file cert1.cer
+
+4. 将服务端证书导入到客户端的keystore
+keytool -import -trustcacerts -alias cert1 -file cert1.cer -keystore tomcat_client_ks
+
+5. 导出客户端证书到client_key.cer文件
+keytool -export -alias cert2 -keystore tomcat_client_ks -file cert2.cer
+
+6. 将客户端证书导入到服务端的keystore
+keytool -import -trustcacerts -alias cert2 -file cert2.cer -keystore tomcat_server_ks
+
+7. 查看jks certificate内容
+keytool -list -keystore tomcat-client.jks
+jks里边有两部分内容: PrivateKeyEntry（本地私钥和证书)和TrustCerEntry(信任的证书).
+
+8. 导出证书为PKCS12
+keytool -export -alias cert1 -keystore cert1.p12 -storetype PKCS12 -storepass tomcat -rfc -file cert1.cer
+keytool -export -alias cert2 -keystore cert2.p12 -storetype PKCS12 -storepass tomcat -rfc -file cert2.cer
+
+9. keytool工具不支持导出私钥，可以编码得到私钥
+
+########openssl创建证书：
+1. 生成公钥私钥：
+openssl genrsa -des3 -out key_pkcs1.pem 2048  生成RSA私钥对PKCS#1格式 -----BEGIN RSA PRIVATE KEY-----
+
+2. 创建证书请求：
+openssl req -subj "/C=CN/ST=BJ/L=BJ/O=HW/OU=HW/CN=localhost" -key key_pkcs1.pem -new -out cert.csr
+
+3. 自签发证书：
+openssl x509 -req -in cert.csr -signkey key_pkcs1.pem -days 3650 -outform pem  -out signed.crt
+
+4. 将PKCS#1私钥转换为PKCS#8格式私钥
+openssl pkcs8 -topk8 -inform PEM -in key_pkcs1.pem  -outform PEM -nocrypt -out key_pkcs8.pem   生成PKCS8格式私钥  -----BEGIN PRIVATE KEY-----
+
+5. 生成公钥
+openssl rsa -in key_pkcs1.pem -pubout -out public_key.pem     生成公钥  -----BEGIN PUBLIC KEY-----
+
+6. 将pem格式私钥和证书合并成PKCS12
+openssl pkcs12 -export -in signed.crt -inkey key_pkcs1.pem -out tomcat.p12 -name tomcat -passin pass:tomcat -passout pass:tomcat
+
+7. 将PKCS12证书导入到JKS库中
+keytool -importkeystore -srckeystore tomcat.p12 -srcstoretype PKCS12 -srcstorepass tomcat -deststorepass tomcat -destkeypass tomcat -destkeystore tomcat.jks
+
+8. openssl也支持将PKCS#8密钥转换成PKCS#1格式
+openssl rsa -in pkcs8.pem  -out pri_key.pem
+
+#######证书转换
+keytool和openssl生成的证书相互之间无法识别，keytool生成的为jsk文件，openssl默认生成的为PEM格式文件。需要先转换成pkcs12格式，然后再使用对方的命令转换成需要的格式。
+
+keytool证书转换为openssl认识的证书：
+1. jks转p12
+keytool -importkeystore -srcstoretype JKS -srckeystore ClientCert.jks -srcstorepass secret -srcalias client -srckeypass tomcat -deststoretype PKCS12 -destkeystore client.p12 -deststorepass tomcat -destalias clientp12 -destkeypass tomcat -noprompt
+
+2. 导出证书：
+openssl pkcs12 -in client.p12 -passin pass:tomcat -nokeys -out client.pem
+
+3. 导出私钥
+openssl pkcs12 -in client.p12 -passin pass:tomcat -nocerts -out client.key
+
+openssl证书转换为keytool认识的证书：
+1. 将pem格式私钥和证书合并成PKCS12
+openssl pkcs12 -export -in public.crt -inkey private.pem -out server.p12 -name server -passin pass:tomcat -passout pass:tomcat
+
+2. 导入到jks中
+keytool -importkeystore -srckeystore server.p12 -srcstoretype PKCS12 -srcstorepass tomcat -alias server -deststorepass tomcat -destkeypass tomcat -destkeystore ServerCert.jks
+
+
+怎样对pkcs#12文件进行base64编码？
+#openssl base64 -in <p12 file> | tr -d '\n' > p12_base64.txt
+
+PKI文件后缀说明
+ASN.1是一套完整的数据结构与数据存储格式描述
+BER/DER是ASN.1的二进制编码方式
+PEM是DER编码再进行Base64编码后的文本格式
+
+公钥和私钥一般都是用PEM方式保存，但是公钥文件还不足以成为证书，还需要CA的签名
+
+X.509 一种通用的证书格式， 包含证书持有人的公钥，加密算法等信息
+pkcs1-pkcs12  公钥加密（非对称加密）的一种标准， 一般存储为*.pN, *p12是包含证书和密钥的封装格式
+*.der 证书的二进制存储格式（不常用）
+*.pem 证书或密钥的Base64文本存储格式，可以单独存放证书或密钥，也可同时存放证书和密钥
+*.key 单独存放的pem格式的密钥， 一般保存为*.key
+*.cer *.crt  都是证书， linux下叫crt， windows下叫cer; 存储格式可以是pem， 也可以是der
+*.csr  证书签名请求，包含证书持有人的信息，如国家，邮件，域名等信息。 CA用自己的私钥文件签名之后生成CRT文件就是完整的证书了。
+*.pfx  微软IIS的实现
+*.jks  Java的keytool实现的证书格式
+
+证书(Certificate) - *.cer *.crt
+私钥(Private Key) - *.key
+证书签名请求(Certificate sign request) - *.csr
+至于pem和der，是编码方式，以上三类均可以使用这两种编码方式，因此*.pem和*.der(少见)不一定是以上三种(Cert,Key,CSR)中的某一种
+
+
+######################PKCS#8#############################
+The unencrypted PKCS#8 encoded data starts and ends with the tags:
+
+-----BEGIN PRIVATE KEY-----
+BASE64 ENCODED DATA
+-----END PRIVATE KEY-----
+
+Within the base64 encoded data the following DER structure is present:
+PrivateKeyInfo ::= SEQUENCE {
+  version         Version,
+  algorithm       AlgorithmIdentifier,
+  PrivateKey      BIT STRING
+}
+
+AlgorithmIdentifier ::= SEQUENCE {
+  algorithm       OBJECT IDENTIFIER,
+  parameters      ANY DEFINED BY algorithm OPTIONAL
+}
+
+######################PKCS#1： RSA Private Key file##################
+The RSA private key PEM file is specific for RSA keys.
+-----BEGIN RSA PRIVATE KEY-----
+BASE64 ENCODED DATA
+-----END RSA PRIVATE KEY-----
+
+Within the base64 encoded data the following DER structure is present:
+RSAPrivateKey ::= SEQUENCE {
+  version           Version,
+  modulus           INTEGER,  -- n
+  publicExponent    INTEGER,  -- e
+  privateExponent   INTEGER,  -- d
+  prime1            INTEGER,  -- p
+  prime2            INTEGER,  -- q
+  exponent1         INTEGER,  -- d mod (p1)
+  exponent2         INTEGER,  -- d mod (q-1)
+  coefficient       INTEGER,  -- (inverse of q) mod p
+  otherPrimeInfos   OtherPrimeInfos OPTIONAL
+}
+
+Tomcat目前只支持JKS和PKCS12格式的keystore
+JKS是Java标准格式, 是keytool工具生成keystore的默认格式，据说Java1.9要将keystore默认格式改为PKCS12。
+PKCS12是internet标准， 比如OpenSSL和微软的Key-Manager使用这种格式操作。
+
+安装证书from CA
+1. 生成Certificate Signing Request CSR
+（1）keytool -genkey -keyalg RSA -alias tomcat  -keystore <your_keystore_filename>   生成一个别名为tomcat的自签名证书
+（2）keytool -certreq -keyalg RSA -alias tomcat -file certreq.csr -keystore <your_keystore_filename>  为别名为tomcat的证书生成CSR文件
+（3）使用CSR文件去CA中心申请CA签名证书
+2. 导入证书
+（1）去CA下载其root certificate or chain certificate
+（2）将root certificate或者chain certificate导入你的keystore
+    keytool -import -alias root -keystore <your_keystore_filename> -trustcaserts -file <filename_of_the_chain_certificate>
+（3）将你申请到的CA签名的证书导入你的keystore
+    keytool -import -alias tomcat -keystore <your_keystore_filename> -file <your_certificate_filename>
+
