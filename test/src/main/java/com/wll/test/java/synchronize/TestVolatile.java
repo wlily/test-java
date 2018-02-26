@@ -7,8 +7,21 @@ import static java.lang.Thread.sleep;
 
 /**
  * volatile变量自增运算测试
+ * volatile有两条语义：
+ * 一是保证线程间变量的可见性
+ * 二是禁止指令重排序(happen-before)
  *
- * @author zzm
+ * 线程间变量可见性，需要参考JMM Java内存模型， 主内存所有线程共享，每个线程各分配一个工作内存存放该线程使用的局部变量及共享变量的副本。
+ * 对于普通变量，修改后，不要求马上写回主内存；读取时，读取工作内存的副本
+ * 对于volatile变量， 修改后，必须马上写回主内存；读取时，也必须从主内存读取最新值
+ *
+ * 对于变量读取不是很频繁的情况下， 可见性方面，普通变量和volatile变量如今差异并不大了， 普通变量也回及时写入内存。
+ * volatile创造之初就是在某些情况下可以代替synchronized实现可见性的目的，规避synchronized带来的线程挂起、调度的开销。
+ * 随着synchronized性能逐渐提高，volatile在可见性使用方面将逐渐退出历史舞台。
+ *
+ * volatile并不能保证原子性，如果volatile也能保证同步，那么它就是个锁，可以完全取代synchronize了，但是volatile不是锁，不能保证同步。
+ *
+ *
  */
 public class TestVolatile {
 

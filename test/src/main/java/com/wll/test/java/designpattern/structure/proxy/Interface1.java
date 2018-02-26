@@ -1,4 +1,4 @@
-package com.wll.test.java.designpattern.proxy;
+package com.wll.test.java.designpattern.structure.proxy;
 
 /**
  * Created by wll on 7/12/17.

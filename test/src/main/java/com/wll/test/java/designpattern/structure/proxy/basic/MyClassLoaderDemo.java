@@ -1,4 +1,4 @@
-package com.wll.test.java.designpattern.proxy.basic;
+package com.wll.test.java.designpattern.structure.proxy.basic;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;

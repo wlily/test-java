@@ -1,4 +1,4 @@
-package com.wll.test.java.designpattern.proxy;
+package com.wll.test.java.designpattern.structure.proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

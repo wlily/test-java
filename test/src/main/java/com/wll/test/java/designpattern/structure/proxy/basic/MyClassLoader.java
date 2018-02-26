@@ -1,4 +1,4 @@
-package com.wll.test.java.designpattern.proxy.basic;
+package com.wll.test.java.designpattern.structure.proxy.basic;
 
 /**
  * 自定义一个类加载器，用于将字节码转换为class对象

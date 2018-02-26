@@ -1,4 +1,4 @@
-package com.wll.test.java.designpattern.proxy.basic;
+package com.wll.test.java.designpattern.structure.proxy.basic;
 
 import javassist.ClassPool;
 import javassist.CtClass;
@@ -10,7 +10,7 @@ public class JavassistGenerator {
     public static void main(String[] args) throws Exception {
         ClassPool pool = ClassPool.getDefault();
         //创建类
-        CtClass cc = pool.makeClass("com.wll.test.java.designpattern.proxy.basic.MyDynamicClassByJavassist");
+        CtClass cc = pool.makeClass("com.wll.test.java.designpattern.structure.proxy.basic.MyDynamicClassByJavassist");
         //定义code方法
         CtMethod method = CtNewMethod.make("public void code(){}", cc);
         //插入方法代码

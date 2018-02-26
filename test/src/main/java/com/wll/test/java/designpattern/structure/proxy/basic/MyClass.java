@@ -1,4 +1,4 @@
-package com.wll.test.java.designpattern.proxy.basic;
+package com.wll.test.java.designpattern.structure.proxy.basic;
 
 /**
  * 一个类，演示字节码加载
