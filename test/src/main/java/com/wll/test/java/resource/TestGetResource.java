@@ -1,7 +1,5 @@
 package com.wll.test.java.resource;
 
-import com.wll.test.java.TestReadFile;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -17,19 +15,7 @@ public class TestGetResource {
     private void test(){
         TestReadFile testReadFile = TestReadFile.getInstance();
         try {
-//            ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//            Resource resources[];
-//            resources = resolver.getResources("classpath*:/txt/test.txt");
-//            for(Resource resource:resources){
-//                System.out.println(resource.getDescription());
-//                System.out.println("aaaaa");
-//                testResource.read2(resource.getInputStream());
-//                System.out.println("bbbbb");
-//            }
-            URL url = this.getClass().getClassLoader().getResource("txt/test.txt");
-            System.out.println("cccccccccccccc");
-            testReadFile.read(url.openStream());
-            System.out.println("dddddddddddddd");
+            System.out.println(testReadFile.readRelative("txt/test.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
